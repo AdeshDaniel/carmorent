@@ -12,7 +12,7 @@ interface CarCardProps {
 const CarCard = ({ car }: CarCardProps) => {
   const { city_mpg, make, year, model, transmission, drive } = car;
 
-  const [IsOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const carRent = calculateCarRent(city_mpg, year);
 
@@ -40,7 +40,7 @@ const CarCard = ({ car }: CarCardProps) => {
       </div>
 
       <div className='relative flex w-full mt-2'>
-        <div className='flex group-hover:invisible w-full justify-between text-gray'>
+        <div className='flex group-hover:invisible w-full justify-between text-grey'>
           <div className='flex flex-col justify-center items-center gap-2'>
             <Image
               src='/steering-wheel.svg'
@@ -72,7 +72,11 @@ const CarCard = ({ car }: CarCardProps) => {
         </div>
       </div>
 
-      <CarDetails />
+      <CarDetails
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        car={car}
+      />
     </div>
   );
 };
